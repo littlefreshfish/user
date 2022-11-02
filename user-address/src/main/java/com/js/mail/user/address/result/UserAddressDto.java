@@ -15,11 +15,26 @@ import lombok.Data;
 public class UserAddressDto {
 
 
-    private Integer id;
+    private Integer addressId;
 
-    private String account;
+    /**
+     * 地址
+     */
+    private String address;
 
-    private String name;
+    /**
+     * 用户ID
+     */
+    private Integer userId;
+
+    /**
+     * 是否默认地址 1 是 0 否
+     */
+    private Integer addressDefault;
+
+    private String receiverName;
+
+    private String orderPhone;
 
 
 

@@ -9,9 +9,20 @@ import lombok.Data;
  */
 @Data
 public class InsertAddressParam {
-    private String account;
 
-    private String name;
 
-    private String password;
+    /**
+     * 地址
+     */
+    private String address;
+
+    /**
+     * 用户ID
+     */
+    private Integer userId;
+
+
+    private String receiverName;
+
+    private String orderPhone;
 }
