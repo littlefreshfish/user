@@ -1,0 +1,4 @@
+com\js\mail\user\address\param\InsertAddressParam.class
+com\js\mail\user\address\UserAddressClient.class
+com\js\mail\user\address\result\UserAddressDto.class
+com\js\mail\user\address\param\UpdateAddressParam.class
