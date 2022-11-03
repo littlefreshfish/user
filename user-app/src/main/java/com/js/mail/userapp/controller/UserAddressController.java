@@ -5,14 +5,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.js.mail.user.address.UserAddressClient;
 import com.js.mail.user.address.param.InsertAddressParam;
-import com.js.mail.user.address.param.UpdateAddressParam;
 import com.js.mail.user.address.result.UserAddressDto;
 import com.js.mail.userapp.model.UserAddress;
 import com.js.mail.userapp.service.UserAddressService;
 import com.js.mail.userapp.utils.BeanCopyUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,20 +25,28 @@ import java.util.List;
  * @since 2022-11-02
  */
 @RestController
-@RequestMapping("/userAddress")
+@RefreshScope
 public class UserAddressController implements UserAddressClient {
 
-    @Resource
+    @Autowired
     private UserAddressService userAddressService;
 
-    @GetMapping("/getAllAddress")
+    @Value("${most.handsome}")
+    public String mostHandsome;
+
+    @GetMapping("/test")
+    public String ll(){
+        return mostHandsome;
+    }
+
+
     public List<UserAddressDto> getAddress(@RequestParam("userId") Integer userId) {
         return BeanCopyUtil.copyList(userAddressService
                 .list(new QueryWrapper<UserAddress>()
                         .eq("user_id", userId)), UserAddressDto.class);
     }
 
-    @PostMapping("/addAddress")
+
     public String addAddress(@RequestBody InsertAddressParam af) {
         UserAddress userAddress = BeanCopyUtil.copyObject(af, UserAddress.class);
         UserAddress addressDb = userAddressService.getOne(new QueryWrapper<UserAddress>()
@@ -52,7 +61,6 @@ public class UserAddressController implements UserAddressClient {
 
     }
 
-    @PutMapping("/setDefaultAddress")
     public String setAddressDefault(@RequestBody Integer id) {
         UserAddress addressDb = userAddressService.getOne(new QueryWrapper<UserAddress>()
                 .eq("id", id));
@@ -71,7 +79,6 @@ public class UserAddressController implements UserAddressClient {
         }
     }
 
-    @DeleteMapping("/delAddress/{id}")
     public String delete(@PathVariable("id") Integer id) {
         return null;
     }

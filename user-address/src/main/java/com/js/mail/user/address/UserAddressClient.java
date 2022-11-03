@@ -1,7 +1,6 @@
 package com.js.mail.user.address;
 
 import com.js.mail.user.address.param.InsertAddressParam;
-import com.js.mail.user.address.param.UpdateAddressParam;
 import com.js.mail.user.address.result.UserAddressDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

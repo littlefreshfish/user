@@ -8,7 +8,6 @@ import com.js.mail.user.client.model.Account;
 import com.js.mail.user.client.param.InsertAccountParam;
 import com.js.mail.user.client.param.UpdateAccountParam;
 import com.js.mail.user.client.result.AccountDto;
-import com.js.mail.userapp.dao.AccountDao;
 import com.js.mail.userapp.service.AccountService;
 import com.js.mail.userapp.utils.BeanCopyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +54,11 @@ public class AccountController implements Userclient {
         if (b)
             return  "删除成功";
         return "删除失败";
+    }
+
+    @Override
+    public boolean checkUser(Integer userId) {
+        return true;
     }
 }
 

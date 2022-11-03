@@ -20,4 +20,7 @@ public interface Userclient {
     @DeleteMapping("/deleteAccount/{id}")
     public String delete(@PathVariable("id") Integer id);
 
+    @GetMapping("/checkUserStatus")
+    public boolean checkUser(@RequestParam Integer userId);
+
 }
